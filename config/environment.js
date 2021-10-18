@@ -3,6 +3,7 @@
 module.exports = function (environment) {
   let ENV = {
     modulePrefix: '--embroider-pods',
+    podModulePrefix: '',
     environment,
     rootURL: '/',
     locationType: 'auto',
