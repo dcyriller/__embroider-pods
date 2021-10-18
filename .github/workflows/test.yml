@@ -1,0 +1,30 @@
+name: Test
+
+env:
+  FORCE_COLOR: 1
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - '*'
+  pull_request:
+
+jobs:
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Volta
+        uses: volta-cli/action@v1
+        with:
+          node-version: 14
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+      - name: Test
+        run: yarn test:ember
